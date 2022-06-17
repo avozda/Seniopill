@@ -1,1 +1,20 @@
-:)
+<app-loading-bar></app-loading-bar>
+<header>
+   <h1>
+      Navbar
+   </h1>
+   <button type="button" routerLink="/">Home</button>
+   <div>
+      <button type="button" routerLink="/patients">Patients</button>
+      <button type="button" routerLink="/patients/create">Create patient</button>
+      <button type="button" routerLink="/patients/2/allocate">patient allocation</button>
+   </div>
+   <div>
+      <button type="button" routerLink="/medicaments">Drugs</button>
+      <button type="button" routerLink="/medicaments/2">Drugs detail</button>
+      <button type="button" routerLink="/medicaments/create">Drugs create</button>
+   </div>
+</header>
+
+
+ <router-outlet></router-outlet>
