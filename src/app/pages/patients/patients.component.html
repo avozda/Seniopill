@@ -1,2 +1,22 @@
-<p>patients works!</p>
-<router-outlet></router-outlet>
+<h1>Patients list</h1>
+
+<table *ngIf="patients$ | async as patients">
+   <thead>
+      <tr>
+          <th>ID</th>
+          <th>Jméno</th>
+          <th>Pokoj</th>
+          <th>Lůžko</th>
+          <th>Datum narození</th>
+      </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let patient of patients">
+      <td> <a [routerLink]="['/patients/', patient.id]">{{ patient.id }}</a></td>
+      <td>{{ patient.name }}</td>
+      <td>{{ patient.room }}</td>
+      <td>{{ patient.bed }}</td>
+      <td>{{ patient.dateOfBirth }}</td>
+  </tr>
+  </tbody>
+</table>

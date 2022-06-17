@@ -1,1 +1,7 @@
-<p>patient-detail works!</p>
+<div *ngIf="patient$ | async as patient">
+  <div>{{ patient.id }}</div>
+  <div>{{ patient.name }}</div>
+  <div>Pokoj č.{{ patient.room }}</div>
+  <div>Postel č.{{ patient.bed }}</div>
+  <div>{{ patient.dateOfBirth }}</div>
+</div>
