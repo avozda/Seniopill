@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { DrugResourceService } from 'src/libs/@api/api-resource/drug-resource.service';
 
 @Component({
   selector: 'app-medicaments',
   templateUrl: './medicaments.component.html',
   styleUrls: ['./medicaments.component.css']
 })
-export class MedicamentsComponent implements OnInit {
+export class MedicamentsComponent {
 
-  constructor() { }
+  constructor(private _drugResourceService: DrugResourceService) { }
 
-  ngOnInit(): void {
-  }
-
+  drugList$ = this._drugResourceService.listAction()
 }

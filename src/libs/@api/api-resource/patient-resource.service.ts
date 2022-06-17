@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { APISchema } from '../api-objects/api-objects';
 import { HttpClientService } from 'src/libs/http/http-client.service';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

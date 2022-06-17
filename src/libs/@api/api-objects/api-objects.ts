@@ -8,7 +8,7 @@ export namespace APISchema {
    }
    export interface Drug {
         id:number;
-        name: string;
+        title: string;
         dosage: string
         description:string;
    }

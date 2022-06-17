@@ -22,6 +22,19 @@
       "id": 3
     }
   ],
-  "drugs": [],
+  "drugs": [
+    {
+      "id": 1,
+      "title": "Trembolon",
+      "description": "Trenbolon je androgenní a anabolický steroid nandrolonové skupiny. Ester trenbolonu jako proléčivo a trenbolonacetát a trenbolon hexahydrobenzylkarbonát byly uvedeny na trh pro veterinární a klinické použití. ",
+      "dosage": "Dokud nejsi velkej"
+    },
+    {
+      "title": "Metandienon",
+      "description": "Metandienon nebo také methandrostenolon je derivát testosteronu. Je to látka zneužívána sportovci ke zlepšení sportovních výkonů. Jedna se o 17 alfa alkylovaný steroid, druhý nejstarší vyvinutý steroid.",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "id": 2
+    }
+  ],
   "allocation": []
 }

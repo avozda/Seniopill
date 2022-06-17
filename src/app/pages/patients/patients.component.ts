@@ -12,5 +12,5 @@ export class PatientsComponent {
 
   constructor(private _patientResourceService: PatientResourceService) { }
   
-  patients$ = this._patientResourceService.listAction();
+  patientList$ = this._patientResourceService.listAction();
 }

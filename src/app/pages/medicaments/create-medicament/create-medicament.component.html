@@ -1,1 +1,28 @@
-<p>create-medicament works!</p>
+<h1>Přidate pacienta</h1>
+<form [formGroup]="formGroup" (ngSubmit)="createPatient(formGroup.value.title, formGroup.value.description, formGroup.value.dosage)">
+   <div class="form-control">
+       <label class="label" for="title">Název</label>
+       <input
+           formControlName="title"
+           type="text"
+           placeholder="Název léku"
+         autofocus
+       />
+   </div>
+   <div class="form-control">
+       <label class="label" for="description">Popis</label>
+       <textarea formControlName="description" placeholder="Popis léku"  cols="20" rows="5"></textarea>
+   </div>
+   <div class="form-control">
+      <label class="label" for="dosage">Dávkování</label>
+      <input
+          formControlName="dosage"
+          type="text"
+          placeholder="Doporučené dávkování"
+      />
+  </div>
+
+   <div>
+       <button nbButton type="submit">Přidat lék</button>
+   </div>
+</form>

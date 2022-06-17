@@ -1,1 +1,16 @@
-<p>medicaments works!</p>
+<h1>Seznám léků</h1>
+
+<table *ngIf="drugList$ | async as drugs">
+   <thead>
+      <tr>
+          <th>ID</th>
+          <th>Název</th>
+      </tr>
+  </thead>
+  <tbody>
+   <tr *ngFor="let drug of drugs">
+      <td> <a [routerLink]="['/medicaments/', drug.id]">{{ drug.id }}</a></td>
+      <td>{{ drug.title }}</td>
+  </tr>
+  </tbody>
+</table>
