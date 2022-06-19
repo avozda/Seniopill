@@ -21,5 +21,9 @@ export class PatientDetailComponent implements OnInit {
     if (!Number(this._route.snapshot.paramMap.get('id'))) {
         this._router.navigate(['/patients']);
     }
-}
+  }
+
+  onDelete(){
+    this._patientResourceService.deleteAction(Number(this.id)).subscribe(()=>this._router.navigate(['/patients']))
+  }
 }

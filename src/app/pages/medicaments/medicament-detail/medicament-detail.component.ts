@@ -19,7 +19,10 @@ export class MedicamentDetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (!Number(this._route.snapshot.paramMap.get('id'))) {
-      this._router.navigate(['/patients']);
+      this._router.navigate(['/medicaments']);
     }
+  }
+  onDelete(){
+    this._drugResourceService.deleteAction(Number(this.id)).subscribe(()=>this._router.navigate(['/medicaments']))
   }
 }

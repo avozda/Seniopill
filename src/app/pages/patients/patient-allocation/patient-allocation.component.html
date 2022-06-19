@@ -1,1 +1,100 @@
-<p>patient-allocation works!</p>
+<h1>Přidat léky k pacientovi</h1>
+<ng-select (change)="onDrugChange()" autofocus [(ngModel)]="selectedDrug">
+   <ng-option *ngFor="let drug of drugs" [value]="drug">{{
+     drug.title
+   }}</ng-option>
+ </ng-select>
+
+<form [formGroup]="formGroup" (ngSubmit)="createAllocation(
+ id,
+selectedDrug.id,
+formGroup.value.hours,
+formGroup.value.minutes,
+formGroup.value.dosage,
+formGroup.value.notify,
+formGroup.value.Mon,
+formGroup.value.Tue,
+formGroup.value.Wed,
+formGroup.value.Thu,
+formGroup.value.Fri,
+formGroup.value.Sat,
+formGroup.value.Sun)">
+
+  <div class="form-control">
+    <label class="label" for="dosage">Dávkování</label>
+    <input
+      formControlName="dosage"
+      type="text"
+      placeholder="Dávkování"
+    />
+  </div>
+  <div class="form-control">
+    <label class="label" for="hours">Hodina</label>
+    <input
+      formControlName="hours"
+      type="number"
+      placeholder="Hodina"
+    />
+  </div>
+  <div class="form-control">
+    <label class="label" for="minutes">Minuty</label>
+    <input
+      formControlName="minutes"
+      type="number"
+      placeholder="Minuty"
+    />
+  </div>
+  <div class="form-control">
+    <label class="label" for="notify">Upozornění</label>
+    <input
+      formControlName="notify"
+      type="checkbox"
+      placeholder="Upozornění"
+    />
+  </div>
+  <div class="form-control">
+    <label class="label" for="Mon">Pondělí</label>
+    <input
+      formControlName="Mon"
+      type="checkbox"
+      placeholder="Pondělí"
+    />
+    <label class="label" for="Tue">Úterý</label>
+    <input
+      formControlName="Tue"
+      type="checkbox"
+      placeholder="Úterý"
+    />
+    <label class="label" for="Wed">Středa</label>
+    <input
+      formControlName="Wed"
+      type="checkbox"
+      placeholder="Středa"
+    />
+    <label class="label" for="Thu">Čtvrtek</label>
+    <input
+      formControlName="Thu"
+      type="checkbox"
+      placeholder="Čtvrtek"
+    />
+    <label class="label" for="Fri">Pátek</label>
+    <input
+      formControlName="Fri"
+      type="checkbox"
+      placeholder="Pátek"
+    />
+    <label class="label" for="Sat">Sobota</label>
+    <input
+      formControlName="Sat"
+      type="checkbox"
+      placeholder="Sobota"
+    />
+    <label class="label" for="Sun">Neděle</label>
+    <input
+      formControlName="Sun"
+      type="checkbox"
+      placeholder="Neděle"
+    />
+  </div>
+  <button type="submit">Add</button>
+</form>

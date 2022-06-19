@@ -8,13 +8,6 @@
       "dateOfBirth": "2003-08-15"
     },
     {
-      "name": "Adamos",
-      "room": 1,
-      "bed": 2,
-      "dateOfBirth": "2022-06-02",
-      "id": 2
-    },
-    {
       "name": "Ondřej Kartousek",
       "room": 2,
       "bed": 3,
@@ -36,5 +29,102 @@
       "id": 2
     }
   ],
-  "allocation": []
+  "allocation": [
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": true,
+      "date": "2022-06-19T22:00:00.000Z",
+      "id": 1
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-19T22:00:00.000Z",
+      "id": 2
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-20T22:00:00.000Z",
+      "id": 3
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-21T22:00:00.000Z",
+      "id": 4
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-22T22:00:00.000Z",
+      "id": 5
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-23T22:00:00.000Z",
+      "id": 6
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-24T22:00:00.000Z",
+      "id": 7
+    },
+    {
+      "patientId": 1,
+      "drugId": 1,
+      "time": {
+        "hours": 9,
+        "minutes": 20
+      },
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-25T22:00:00.000Z",
+      "id": 8
+    }
+  ]
 }

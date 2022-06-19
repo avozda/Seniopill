@@ -29,9 +29,10 @@ export class PatientResourceService extends HttpClientService {
     });
   }
 
-  createAction(payload: {name: string, room: number, bed:number, dateOfBirth:""}, params?: Record<string, any>) {
+  createAction(payload: {name: string, room: number, bed:number, dateOfBirth:string}, params?: Record<string, any>) {
     return this.post<APISchema.Patient>(PatientResourceService.CREATE_ACTION_URL, payload, {
       params: params,
     });
   }
+
 }

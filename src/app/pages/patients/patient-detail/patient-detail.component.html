@@ -4,4 +4,7 @@
   <div>Pokoj č.{{ patient.room }}</div>
   <div>Postel č.{{ patient.bed }}</div>
   <div>{{ patient.dateOfBirth }}</div>
+  <a routerLink='allocate'>patient allocation</a>
 </div>
+
+<button (click)="onDelete()">Delete</button>

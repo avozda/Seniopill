@@ -6,7 +6,7 @@ import { PatientsComponent } from './patients.component';
 import { CreatePatientComponent } from './create-patient/create-patient.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientAllocationComponent } from './patient-allocation/patient-allocation.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { PatientAllocationComponent } from './patient-allocation/patient-allocat
     CommonModule,
     PatientsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgSelectModule
   ]
 })
 export class PatientsModule { }

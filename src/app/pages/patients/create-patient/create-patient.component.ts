@@ -24,7 +24,7 @@ export class CreatePatientComponent {
 
   createPatient(name: string, room: number, bed: number, dateOfBirth: '') {
     this._patientResourceService
-      .createAction({ name, room, bed, dateOfBirth })
+      .createAction({ name, room, bed, dateOfBirth})
       .subscribe(() => this.router.navigate(['/patients']));
   }
 }
