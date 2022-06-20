@@ -16,6 +16,7 @@ export namespace APISchema {
   }
   export interface Allocation {
     id: number;
+    drugTitle: string;
     patientId: number;
     drugId: number;
     time: Time;

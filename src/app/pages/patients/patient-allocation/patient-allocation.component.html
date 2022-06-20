@@ -8,6 +8,7 @@
 <form [formGroup]="formGroup" (ngSubmit)="createAllocation(
  id,
 selectedDrug.id,
+selectedDrug.title,
 formGroup.value.hours,
 formGroup.value.minutes,
 formGroup.value.dosage,

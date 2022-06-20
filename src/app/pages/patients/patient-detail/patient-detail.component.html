@@ -7,4 +7,27 @@
   <a routerLink='allocate'>patient allocation</a>
 </div>
 
-<button (click)="onDelete()">Delete</button>
+<button (click)="onDelete()">Delete patient</button>
+
+<table >
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Název</th>
+      <th scope="col">Dávka</th>
+      <th scope="col">Čas</th> 
+      <th scope="col">Datum</th>    
+      <th></th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let allocation of allocations ">
+      <th scope="row">{{ allocation.id}}</th>
+      <td>{{allocation.drugTitle}}</td>
+      <td>{{ allocation.dosage}}</td>
+      <td>{{ allocation.time.hours}}:{{allocation.time.minutes}}</td>
+      <td>{{allocation.date | date}}</td>
+      <td><button (click)="completeAllocation(allocation.id)">✔️</button> <button (click)="deleteAllocation(allocation.id)">smazat</button></td>
+    </tr>
+  </tbody>
+</table>

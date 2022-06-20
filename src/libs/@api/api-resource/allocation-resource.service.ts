@@ -57,4 +57,24 @@ export class AllocationResourceService extends HttpClientService {
       }
     );
   }
+  updateAction(
+    id:string,
+    payload: {
+      patientId: number;
+      drugId: number;
+      time: Time;
+      dosage: string;
+      notify: boolean;
+      date:Date
+    },
+    params?: Record<string, any>
+  ) {
+    return this.put<APISchema.Allocation>(
+      AllocationResourceService.UPDATE_ACTION_URL.replace(':id', id),
+      payload,
+      {
+        params: params,
+      }
+    );
+  }
 }
