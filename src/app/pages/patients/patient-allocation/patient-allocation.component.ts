@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Time } from '@angular/common';
 import { AllocationResourceService } from 'src/libs/@api/api-resource/allocation-resource.service';
-
 @Component({
   selector: 'app-patient-allocation',
   templateUrl: './patient-allocation.component.html',
@@ -21,9 +20,8 @@ export class PatientAllocationComponent implements OnInit {
   ) {}
 
   formGroup = this._formBuilder.group({
-    hours: Number,
-    minutes: Number,
     dosage: '',
+    time: '',
     notify: false,
     Mon: false,
     Tue: false,
@@ -46,6 +44,7 @@ export class PatientAllocationComponent implements OnInit {
     this.getAllDrugs();
   }
 
+
   getAllDrugs() {
     this._drugResourceService.listAction().subscribe((value) => {
       this.drugs = value;
@@ -60,9 +59,11 @@ export class PatientAllocationComponent implements OnInit {
   }
   getNextDayOfTheWeek(
     dayName: string,
+    time: string,
     excludeToday = false,
     refDate = new Date()
   ): Date {
+    
     const dayOfWeek = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(
       dayName.slice(0, 3).toLowerCase()
     );
@@ -72,6 +73,9 @@ export class PatientAllocationComponent implements OnInit {
         +!!excludeToday +
         ((dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7)
     );
+   
+    refDate.setHours(Number(time.split(":")[0]))
+    refDate.setMinutes(Number(time.split(":")[1]))
     return refDate;
   }
 
@@ -79,8 +83,7 @@ export class PatientAllocationComponent implements OnInit {
     patientId: string,
     drugId: number,
     drugTitle: string,
-    hours: number,
-    minutes: number,
+    time:string,
     dosage: string,
     notify: boolean,
     Mon: boolean,
@@ -90,47 +93,49 @@ export class PatientAllocationComponent implements OnInit {
     Fri: boolean,
     Sat: boolean,
     Sun: boolean
-  ) {
-    const time: Time = {
-      hours,
-      minutes,
+  ) { 
+
+    let data = {
+      patientId: Number(patientId),
+      drugId,
+      drugTitle,
+      time,
+      dosage,
+      notify,
     };
-
-
-    let data = { patientId: Number(patientId), drugId, drugTitle, time, dosage, notify };
     if (Mon) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Mon') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Mon', time) });
     }
     if (Tue) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Tue') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Tue', time) });
     }
     if (Wed) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Wed') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Wed', time) });
     }
     if (Thu) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Thu') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Thu', time) });
     }
     if (Fri) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Fri') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Fri', time) });
     }
     if (Sat) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Sat') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Sat',time) });
     }
     if (Sun) {
-      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Sun') });
+      this.sendAllocation({ ...data, date: this.getNextDayOfTheWeek('Sun', time) });
     }
 
-    this._router.navigate(['/patients', this.id])
+    this._router.navigate(['/patients', this.id]);
   }
   sendAllocation(payload: {
     patientId: number;
     drugId: number;
     drugTitle: string;
-    time: Time;
     dosage: string;
     notify: boolean;
     date: Date;
   }) {
+    console.log(payload.date)
     this._allocationResourceService.createAction(payload).subscribe();
   }
 }

@@ -7,6 +7,8 @@ import { CreatePatientComponent } from './create-patient/create-patient.componen
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
 import { PatientAllocationComponent } from './patient-allocation/patient-allocation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     PatientsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class PatientsModule { }

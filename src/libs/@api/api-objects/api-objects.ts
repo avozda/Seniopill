@@ -19,7 +19,6 @@ export namespace APISchema {
     drugTitle: string;
     patientId: number;
     drugId: number;
-    time: Time;
     date: Date;
     dosage: string;
     notify: boolean;

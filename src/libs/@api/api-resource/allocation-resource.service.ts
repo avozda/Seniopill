@@ -42,10 +42,9 @@ export class AllocationResourceService extends HttpClientService {
     payload: {
       patientId: number;
       drugId: number;
-      time: Time;
       dosage: string;
       notify: boolean;
-      date:Date
+      date: Date;
     },
     params?: Record<string, any>
   ) {
@@ -58,14 +57,13 @@ export class AllocationResourceService extends HttpClientService {
     );
   }
   updateAction(
-    id:string,
+    id: string,
     payload: {
       patientId: number;
       drugId: number;
-      time: Time;
       dosage: string;
       notify: boolean;
-      date:Date
+      date: Date;
     },
     params?: Record<string, any>
   ) {

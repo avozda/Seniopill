@@ -7,7 +7,9 @@ import { LoadingBarModule } from 'src/libs/loading-bar/loading-bar.module';
 import { DecoratorInterceptor } from 'src/libs/http/interceptors/decorator-interceptor';
 import { LoadingInterceptor } from 'src/libs/http/interceptors/loading-interceptor';
 import { API_URL } from 'src/libs/http/http-tokens';
-import {environment} from "../environments/environment"
+import {environment} from "../environments/environment";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {environment} from "../environments/environment"
     BrowserModule,
     AppRoutingModule,
     LoadingBarModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [ 
     {provide: HTTP_INTERCEPTORS, useClass: DecoratorInterceptor, multi: true},

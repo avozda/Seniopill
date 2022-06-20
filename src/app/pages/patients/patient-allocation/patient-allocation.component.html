@@ -5,12 +5,12 @@
    }}</ng-option>
  </ng-select>
 
+
 <form [formGroup]="formGroup" (ngSubmit)="createAllocation(
  id,
 selectedDrug.id,
 selectedDrug.title,
-formGroup.value.hours,
-formGroup.value.minutes,
+formGroup.value.time,
 formGroup.value.dosage,
 formGroup.value.notify,
 formGroup.value.Mon,
@@ -30,20 +30,10 @@ formGroup.value.Sun)">
     />
   </div>
   <div class="form-control">
-    <label class="label" for="hours">Hodina</label>
-    <input
-      formControlName="hours"
-      type="number"
-      placeholder="Hodina"
-    />
-  </div>
-  <div class="form-control">
-    <label class="label" for="minutes">Minuty</label>
-    <input
-      formControlName="minutes"
-      type="number"
-      placeholder="Minuty"
-    />
+    <label class="label" for="hours">Čas</label>
+    <input [ngxTimepicker]="picker" [format]="24" formControlName="time"  placeholder="Čas" readonly>
+    <ngx-material-timepicker #picker></ngx-material-timepicker>
+    
   </div>
   <div class="form-control">
     <label class="label" for="notify">Upozornění</label>
