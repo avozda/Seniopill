@@ -8,6 +8,8 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
 import { PatientAllocationComponent } from './patient-allocation/patient-allocation.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { EditPatientComponent } from './edit-patient/edit-patient.component';
+import { PatientFormComponent } from '../../components/patient-form/patient-form.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     CreatePatientComponent,
     PatientsComponent,
     PatientDetailComponent,
-    PatientAllocationComponent
+    PatientAllocationComponent,
+    EditPatientComponent,
+    PatientFormComponent
   ],
   imports: [
     CommonModule,

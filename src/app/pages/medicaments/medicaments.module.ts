@@ -5,11 +5,16 @@ import { MedicamentsRoutingModule } from './medicaments-routing.module';
 import { MedicamentsComponent } from './medicaments.component';
 import { MedicamentDetailComponent } from './medicament-detail/medicament-detail.component';
 import { CreateMedicamentComponent } from './create-medicament/create-medicament.component';
+import { EditMedicamentComponent } from './edit-medicament/edit-medicament.component';
+import { MedicamentFormComponent } from '../../components/medicament-form/medicament-form.component'
+
 @NgModule({
   declarations: [
     MedicamentsComponent,
     MedicamentDetailComponent,
-    CreateMedicamentComponent
+    CreateMedicamentComponent,
+    EditMedicamentComponent,
+    MedicamentFormComponent
   ],
   imports: [
     CommonModule,

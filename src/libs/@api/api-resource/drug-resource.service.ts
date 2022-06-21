@@ -34,5 +34,10 @@ export class DrugResourceService extends HttpClientService{
       params: params,
     });
   }
+  updateAction(id:string, payload: {title: string,description:string, dosage:string}, params?: Record<string, any>) {
+    return this.put<APISchema.Drug>(DrugResourceService.UPDATE_ACTION_URL.replace(':id', id), payload, {
+      params: params,
+    });
+  }
 
 }

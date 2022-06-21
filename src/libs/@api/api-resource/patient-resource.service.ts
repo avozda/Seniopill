@@ -34,5 +34,10 @@ export class PatientResourceService extends HttpClientService {
       params: params,
     });
   }
+  updateAction(id:string, payload: {name: string, room: number, bed:number, dateOfBirth:string}, params?: Record<string, any>) {
+    return this.put<APISchema.Patient>(PatientResourceService.UPDATE_ACTION_URL.replace(':id', id), payload, {
+      params: params,
+    });
+  }
 
 }

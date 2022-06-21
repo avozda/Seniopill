@@ -8,7 +8,8 @@ import { DecoratorInterceptor } from 'src/libs/http/interceptors/decorator-inter
 import { LoadingInterceptor } from 'src/libs/http/interceptors/loading-interceptor';
 import { API_URL } from 'src/libs/http/http-tokens';
 import {environment} from "../environments/environment";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
 import { PatientResourceService } from 'src/libs/@api/api-resource/patient-resource.service';
 import { Router } from '@angular/router';
 
@@ -10,21 +9,13 @@ import { Router } from '@angular/router';
 })
 export class CreatePatientComponent {
   constructor(
-    private _formBuilder: FormBuilder,
     private _patientResourceService: PatientResourceService,
     private router: Router
   ) {}
 
-  formGroup = this._formBuilder.group({
-    name: '',
-    room: null,
-    bed: null,
-    dateOfBirth: '',
-  });
-
-  createPatient(name: string, room: number, bed: number, dateOfBirth: '') {
+  createPatient(payload:{name: string, room: number, bed: number, dateOfBirth: string}) {
     this._patientResourceService
-      .createAction({ name, room, bed, dateOfBirth})
+      .createAction(payload)
       .subscribe(() => this.router.navigate(['/patients']));
   }
 }
