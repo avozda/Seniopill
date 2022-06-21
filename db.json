@@ -35,5 +35,116 @@
       "id": 3
     }
   ],
-  "allocation": []
+  "allocation": [
+    {
+      "patientId": 1,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Adam Vožda",
+      "time": "10:25",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-20T08:25:00.000Z",
+      "id": 1
+    },
+    {
+      "patientId": 1,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Adam Vožda",
+      "time": "10:25",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-21T08:25:00.000Z",
+      "id": 2
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-27T04:00:00.000Z",
+      "id": 3
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-21T04:00:00.000Z",
+      "id": 4
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-22T04:00:00.000Z",
+      "id": 5
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-23T04:00:00.000Z",
+      "id": 6
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-24T04:00:00.000Z",
+      "id": 7
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-25T04:00:00.000Z",
+      "id": 8
+    },
+    {
+      "patientId": 3,
+      "drugId": 2,
+      "drugTitle": "Metandienon",
+      "patientName": "Ondřej Kartousek",
+      "time": "06:00",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "notify": true,
+      "date": "2022-06-26T04:00:00.000Z",
+      "id": 9
+    },
+    {
+      "patientId": 3,
+      "drugId": 1,
+      "drugTitle": "Trembolon",
+      "patientName": "Ondřej Kartousek",
+      "time": "19:00",
+      "dosage": "Dokud nejsi velkej",
+      "notify": false,
+      "date": "2022-06-21T17:00:00.000Z",
+      "id": 10
+    }
+  ]
 }

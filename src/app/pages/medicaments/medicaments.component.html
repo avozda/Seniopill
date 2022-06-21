@@ -1,6 +1,6 @@
 <h1>Seznám léků</h1>
-
-<table *ngIf="drugList$ | async as drugs">
+<input type="text" placeholder="search" (input)="filterDrugList($event)">
+<table >
    <thead>
       <tr>
           <th>ID</th>
@@ -8,7 +8,7 @@
       </tr>
   </thead>
   <tbody>
-   <tr *ngFor="let drug of drugs">
+   <tr *ngFor="let drug of filteredList">
       <td> <a [routerLink]="['/medicaments/', drug.id]">{{ drug.id }}</a></td>
       <td>{{ drug.title }}</td>
   </tr>

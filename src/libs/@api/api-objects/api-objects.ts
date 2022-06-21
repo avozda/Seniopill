@@ -18,6 +18,7 @@ export namespace APISchema {
     id: number;
     drugTitle: string;
     patientId: number;
+    patientName: string;
     drugId: number;
     date: Date;
     dosage: string;

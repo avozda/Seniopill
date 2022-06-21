@@ -3,8 +3,9 @@ import { APISchema } from 'src/libs/@api/api-objects/api-objects';
 import { DrugResourceService } from 'src/libs/@api/api-resource/drug-resource.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
-import { Time } from '@angular/common';
+import { PatientResourceService } from 'src/libs/@api/api-resource/patient-resource.service';
 import { AllocationResourceService } from 'src/libs/@api/api-resource/allocation-resource.service';
+
 @Component({
   selector: 'app-patient-allocation',
   templateUrl: './patient-allocation.component.html',
@@ -14,6 +15,7 @@ export class PatientAllocationComponent implements OnInit {
   constructor(
     private _drugResourceService: DrugResourceService,
     private _allocationResourceService: AllocationResourceService,
+    private _patientResourceService: PatientResourceService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _formBuilder: FormBuilder
@@ -35,6 +37,7 @@ export class PatientAllocationComponent implements OnInit {
   id: string = String(this._route.snapshot.paramMap.get('id'));
   drugs: APISchema.Drug[] = [];
   selectedDrug: APISchema.Drug = this.drugs[0];
+  patient: APISchema.Patient | {name:string} = {name:""};
 
   ngOnInit(): void {
     if (!Number(this._route.snapshot.paramMap.get('id'))) {
@@ -42,6 +45,7 @@ export class PatientAllocationComponent implements OnInit {
     }
 
     this.getAllDrugs();
+    this.getPatient();
   }
 
 
@@ -49,6 +53,10 @@ export class PatientAllocationComponent implements OnInit {
     this._drugResourceService.listAction().subscribe((value) => {
       this.drugs = value;
     });
+  }
+  getPatient(){
+    
+   this._patientResourceService.detailAction(this.id).subscribe((value)=> this.patient=value)
   }
 
   onDrugChange() {
@@ -83,6 +91,7 @@ export class PatientAllocationComponent implements OnInit {
     patientId: string,
     drugId: number,
     drugTitle: string,
+    patientName:string,
     time:string,
     dosage: string,
     notify: boolean,
@@ -99,6 +108,7 @@ export class PatientAllocationComponent implements OnInit {
       patientId: Number(patientId),
       drugId,
       drugTitle,
+      patientName,
       time,
       dosage,
       notify,
@@ -131,6 +141,7 @@ export class PatientAllocationComponent implements OnInit {
     patientId: number;
     drugId: number;
     drugTitle: string;
+    patientName:string;
     dosage: string;
     notify: boolean;
     date: Date;

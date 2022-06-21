@@ -1,0 +1,25 @@
+<h2>Denní dávky</h2>
+<select (change)="dayChange($event)">
+   <option *ngFor="let day of days" [value]="day">{{day | date: 'EEEE'}}</option>
+</select>
+<table >
+   <thead>
+     <tr>
+       <th scope="col">Id</th>
+       <th scope="col">Název</th>
+       <th scope="col">Jméno pacienta</th>
+       <th scope="col">Dávka</th>
+       <th scope="col">Datum</th>    
+       <th></th> 
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let allocation of upcomingAllocations" [routerLink]="['/patients/', allocation.patientId]">
+       <th scope="row">{{ allocation.id}}</th>
+       <td>{{allocation.drugTitle}}</td>
+       <td>{{allocation.patientName}}</td>
+       <td>{{allocation.dosage}}</td>  
+       <td>{{allocation.date | date: 'EEEE dd/MM HH:mm'}}</td>
+     </tr>
+   </tbody>
+ </table>

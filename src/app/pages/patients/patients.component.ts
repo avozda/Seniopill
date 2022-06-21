@@ -6,11 +6,29 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
-  styleUrls: ['./patients.component.css']
+  styleUrls: ['./patients.component.css'],
 })
-export class PatientsComponent {
+export class PatientsComponent implements OnInit {
+  constructor(private _patientResourceService: PatientResourceService) {}
+  ngOnInit(): void {
+    this.getPatients();
+  }
 
-  constructor(private _patientResourceService: PatientResourceService) { }
-  
-  patientList$ = this._patientResourceService.listAction();
+  patientList: APISchema.Patient[] = [];
+  filteredList: APISchema.Patient[] = [];
+
+  filterPatientList(e: any) {
+ 
+      this.filteredList = this.patientList.filter((value) =>
+        value.name.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+   
+  }
+
+  getPatients() {
+    this._patientResourceService.listAction().subscribe((value) => {
+      this.patientList = value;
+      this.filteredList = value;
+    });
+  }
 }

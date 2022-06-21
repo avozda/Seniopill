@@ -42,6 +42,7 @@ export class AllocationResourceService extends HttpClientService {
     payload: {
       patientId: number;
       drugId: number;
+      patientName:string;
       dosage: string;
       notify: boolean;
       date: Date;
@@ -61,6 +62,7 @@ export class AllocationResourceService extends HttpClientService {
     payload: {
       patientId: number;
       drugId: number;
+      patientName:string;
       dosage: string;
       notify: boolean;
       date: Date;
