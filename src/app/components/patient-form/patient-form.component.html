@@ -1,94 +1,133 @@
-
-<ng-container  *ngIf="Data;else create">
-
-    <form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup.value.name, 
-                                                         formGroup.value.room, 
-                                                         formGroup.value.bed,
-                                                         formGroup.value.dateOfBirth)">
-   <div class="form-control">
-       <label class="label" for="name">Jméno</label>
-       <input
-            [value]="Data.name"
-           formControlName="name"
-           type="text"
-           placeholder="Jméno pacienta"
-         autofocus
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="dateOfBirth">Datum narození</label>
-       <input
-       [value]="Data.dateOfBirth"         
-           formControlName="dateOfBirth"
-           type="date"
-           placeholder="Datum narození"
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="room">Číslo místnosti</label>
-       <input        
-       [value]="Data.room"   
-           formControlName="room"
-           type="number"
-           placeholder="0"
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="bed">Číslo lůžka</label>
-       <input      
-       [value]="Data.bed"     
-           formControlName="bed"
-           type="number"
-           placeholder="0"
-       />
-   </div>
-   <div>
-       <button nbButton type="submit">Upravit pacienta</button>
-   </div>
-</form>
+<ng-container *ngIf="Data; else create">
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="
+      submitForm(
+        formGroup.value.name,
+        formGroup.value.room,
+        formGroup.value.bed,
+        formGroup.value.dateOfBirth,
+        formGroup.value.sex,
+        formGroup.value.description
+      )
+    "
+  >
+    <div class="form-control">
+      <label class="label" for="name">Jméno</label>
+      <input
+        [value]="Data.name"
+        formControlName="name"
+        type="text"
+        placeholder="Jméno pacienta"
+        autofocus
+      />
+    </div>
+    <div class="form-control">
+      <label class="label" for="name">Další informace</label>
+      <textarea
+        formControlName="description"
+        placeholder="..."
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="form-control">
+      <select formControlName="sex">
+        <option value="Muž">Muž</option>
+        <option value="Žena">Žena</option>
+        <option value="Jiné">Jiné</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label class="label" for="dateOfBirth">Datum narození</label>
+      <input
+        [value]="Data.dateOfBirth"
+        formControlName="dateOfBirth"
+        type="date"
+        placeholder="Datum narození"
+      />
+    </div>
+    <div class="form-control">
+      <label class="label" for="room">Číslo místnosti</label>
+      <input
+        [value]="Data.room"
+        formControlName="room"
+        type="number"
+        placeholder="0"
+      />
+    </div>
+    <div class="form-control">
+      <label class="label" for="bed">Číslo lůžka</label>
+      <input
+        [value]="Data.bed"
+        formControlName="bed"
+        type="number"
+        placeholder="0"
+      />
+    </div>
+    <div>
+      <button nbButton type="submit">Upravit pacienta</button>
+    </div>
+  </form>
 </ng-container>
 
 <ng-template #create>
-    <form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup.value.name, 
-                                                         formGroup.value.room, 
-                                                         formGroup.value.bed,
-                                                         formGroup.value.dateOfBirth)">
-   <div class="form-control">
-       <label class="label" for="name">Jméno</label>
-       <input
-
-           formControlName="name"
-           type="text"
-           placeholder="Jméno pacienta"
-         autofocus
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="dateOfBirth">Datum narození</label>
-       <input         
-           formControlName="dateOfBirth"
-           type="date"
-           placeholder="Datum narození"
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="room">Číslo místnosti</label>
-       <input         
-           formControlName="room"
-           type="number"
-           placeholder="0"
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="bed">Číslo lůžka</label>
-       <input         
-           formControlName="bed"
-           type="number"
-           placeholder="0"
-       />
-   </div>
-   <div>
-       <button nbButton type="submit">Přidat pacienta</button>
-   </div>
-</form>
+  <form
+    [formGroup]="formGroup"
+    (ngSubmit)="
+      submitForm(
+        formGroup.value.name,
+        formGroup.value.room,
+        formGroup.value.bed,
+        formGroup.value.dateOfBirth,
+        formGroup.value.sex,
+        formGroup.value.description
+      )
+    "
+  >
+    <div class="form-control">
+      <label class="label" for="name">Jméno</label>
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Jméno pacienta"
+        autofocus
+      />
+    </div>
+    <div class="form-control">
+      <label class="label" for="name">Další informace</label>
+      <textarea
+        formControlName="description"
+        placeholder="..."
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+    <div class="form-control">
+      <select formControlName="sex">
+        <option value="Muž">Muž</option>
+        <option value="Žena">Žena</option>
+        <option value="Jiné">Jiné</option>
+      </select>
+    </div>
+    <div class="form-control">
+      <label class="label" for="dateOfBirth">Datum narození</label>
+      <input
+        formControlName="dateOfBirth"
+        type="date"
+        placeholder="Datum narození"
+      />
+    </div>
+    <div class="form-control">
+      <label class="label" for="room">Číslo místnosti</label>
+      <input formControlName="room" type="number" placeholder="0" />
+    </div>
+    <div class="form-control">
+      <label class="label" for="bed">Číslo lůžka</label>
+      <input formControlName="bed" type="number" placeholder="0" />
+    </div>
+    <div>
+      <button nbButton type="submit">Přidat pacienta</button>
+    </div>
+  </form>
 </ng-template>

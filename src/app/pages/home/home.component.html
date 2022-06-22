@@ -1,25 +1,59 @@
-<h2>Denní dávky</h2>
-<select (change)="dayChange($event)">
-   <option *ngFor="let day of days" [value]="day">{{day | date: 'EEEE'}}</option>
-</select>
-<table >
-   <thead>
-     <tr>
-       <th scope="col">Id</th>
-       <th scope="col">Název</th>
-       <th scope="col">Jméno pacienta</th>
-       <th scope="col">Dávka</th>
-       <th scope="col">Datum</th>    
-       <th></th> 
-     </tr>
-   </thead>
-   <tbody>
-     <tr *ngFor="let allocation of upcomingAllocations" [routerLink]="['/patients/', allocation.patientId]">
-       <th scope="row">{{ allocation.id}}</th>
-       <td>{{allocation.drugTitle}}</td>
-       <td>{{allocation.patientName}}</td>
-       <td>{{allocation.dosage}}</td>  
-       <td>{{allocation.date | date: 'EEEE dd/MM HH:mm'}}</td>
-     </tr>
-   </tbody>
- </table>
+<section>
+  <div class="half">
+    <div style="display: flex; justify-content:space-between; width: 75%;">
+      <h2>Dávky tohoto týdne</h2>
+      <select (change)="dayChange($event)">
+        <option *ngFor="let day of days" [value]="day">
+          {{ day | date: "EEEE" }}
+        </option>
+      </select>
+    </div>
+    
+    <div *ngIf="upcomingAllocations.length!=0; else empty"  class="medicaments">
+      <mat-card
+        class="card"
+        *ngFor="let allocation of upcomingAllocations"
+        [routerLink]="['/patients/', allocation.patientId]"
+      >
+        <div class="data">
+          <p style="margin-bottom: 10px">
+            <b>{{ allocation.patientName }}</b>
+          </p>
+          <p>
+            <b>{{ allocation.date | date: "HH:mm" }}</b>
+          </p>
+        </div>
+
+        <div class="data">
+          <p>{{ allocation.drugTitle }}</p>
+          <p>{{ allocation.dosage }}</p>
+        </div>
+      </mat-card>
+    </div>
+    <ng-template #empty ><p class="empty-box">Všechny léky pro tento den již byly rozdány 💊</p></ng-template>
+  </div>
+  <div class="half">
+    <h2>Naposledy zobrazení pacienti</h2>
+    <div class="medicaments">
+      <mat-card
+        class="card"
+        *ngFor="let patient of lastSeenPatients"
+        [routerLink]="['/patients/', patient.id]"
+      >
+        <div class="data">
+          <p style="margin-bottom: 10px">
+            <b>{{ patient.name }}</b>
+          </p>
+          <p>
+            <b>Pokoj č.{{ patient.room }} Lůžko č.{{ patient.bed }}</b>
+          </p>
+        </div>
+
+        <div class="data">
+          <p>{{ patient.sex }}</p>
+          <p>Narozen {{ patient.dateOfBirth | date : 'YYYY' }}</p>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</section>

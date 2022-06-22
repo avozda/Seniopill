@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-patients',
   templateUrl: './patients.component.html',
-  styleUrls: ['./patients.component.css'],
+  styleUrls: ['./patients.component.scss'],
 })
 export class PatientsComponent implements OnInit {
   constructor(private _patientResourceService: PatientResourceService) {}

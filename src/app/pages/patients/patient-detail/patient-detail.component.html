@@ -4,11 +4,13 @@
   <div>Pokoj č.{{ patient.room }}</div>
   <div>Postel č.{{ patient.bed }}</div>
   <div>{{ patient.dateOfBirth }}</div>
+  <div>{{patient.sex}}</div>
+  <div>{{patient.description}}</div>
   <a routerLink='allocate'>patient allocation</a>
 </div>
+<a [routerLink]="['edit']"><button>Edit</button></a>
 
-<button (click)="onDelete()">Delete patient</button>
-
+<app-dialog-button (onDelete)="onDelete()"></app-dialog-button>
 <table >
   <thead>
     <tr>
@@ -25,8 +27,8 @@
       <td>{{allocation.drugTitle}}</td>
       <td>{{allocation.dosage}}</td>  
       <td>{{allocation.date | date: 'EEEE dd/MM HH:mm'}}</td>
-      <td><button (click)="completeAllocation(allocation.id)">✔️</button> <button (click)="deleteAllocation(allocation.id)">smazat</button></td>
+      <td><button (click)="completeAllocation(allocation.id)">✔️</button> 
+        <app-dialog-button (onDelete)="deleteAllocation(allocation.id)"></app-dialog-button>
     </tr>
   </tbody>
-
-</table>  <a [routerLink]="['edit']" >Edit</a>
+</table>

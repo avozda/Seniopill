@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-edit-patient',
   templateUrl: './edit-patient.component.html',
-  styleUrls: ['./edit-patient.component.css']
+  styleUrls: ['./edit-patient.component.scss']
 })
 export class EditPatientComponent implements OnInit {
 

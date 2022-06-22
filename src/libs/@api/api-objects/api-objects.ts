@@ -7,6 +7,8 @@ export namespace APISchema {
     dateOfBirth: Date;
     room: number;
     bed: number;
+    sex: string;
+    description: string;
   }
   export interface Drug {
     id: number;

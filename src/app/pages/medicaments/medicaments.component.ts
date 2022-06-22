@@ -5,7 +5,7 @@ import { DrugResourceService } from 'src/libs/@api/api-resource/drug-resource.se
 @Component({
   selector: 'app-medicaments',
   templateUrl: './medicaments.component.html',
-  styleUrls: ['./medicaments.component.css']
+  styleUrls: ['./medicaments.component.scss']
 })
 export class MedicamentsComponent implements OnInit {
 

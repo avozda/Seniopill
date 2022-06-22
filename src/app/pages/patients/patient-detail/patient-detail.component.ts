@@ -3,16 +3,18 @@ import { PatientResourceService } from 'src/libs/@api/api-resource/patient-resou
 import { ActivatedRoute, Router } from '@angular/router';
 import { AllocationResourceService } from 'src/libs/@api/api-resource/allocation-resource.service';
 import { APISchema } from 'src/libs/@api/api-objects/api-objects';
+import { LastSeenPatientsService } from 'src/app/utils/last-seen-patients.service';
 
 @Component({
   selector: 'app-patient-detail',
   templateUrl: './patient-detail.component.html',
-  styleUrls: ['./patient-detail.component.css'],
+  styleUrls: ['./patient-detail.component.scss'],
 })
 export class PatientDetailComponent implements OnInit {
   constructor(
     private _patientResourceService: PatientResourceService,
     private _allocationResourceService: AllocationResourceService,
+    private _lastSeenPatientService: LastSeenPatientsService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {}
@@ -26,6 +28,9 @@ export class PatientDetailComponent implements OnInit {
       this._router.navigate(['/patients']);
     }
     this.getAllocations();
+    this._patientResourceService
+      .detailAction(this.id)
+      .subscribe((value) => this._lastSeenPatientService.addNew(value));
   }
 
   onDelete() {
@@ -48,8 +53,10 @@ export class PatientDetailComponent implements OnInit {
       this.allocations = this.allocations.filter((all) => all.id != id);
     });
   }
-  sortAllocations(){
-    this.allocations.sort((a,b)=> new Date(a.date).getTime()-new Date(b.date).getTime())
+  sortAllocations() {
+    this.allocations.sort(
+      (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+    );
   }
   addDays(days: number, date: Date): Date {
     var futureDate = new Date(date);
@@ -66,6 +73,6 @@ export class PatientDetailComponent implements OnInit {
           .subscribe();
       }
     });
-    this.sortAllocations()
+    this.sortAllocations();
   }
 }

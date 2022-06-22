@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-medicament',
   templateUrl: './create-medicament.component.html',
-  styleUrls: ['./create-medicament.component.css'],
+  styleUrls: ['./create-medicament.component.scss'],
 })
 export class CreateMedicamentComponent {
   constructor( 

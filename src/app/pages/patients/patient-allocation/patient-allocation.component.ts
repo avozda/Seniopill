@@ -9,7 +9,7 @@ import { AllocationResourceService } from 'src/libs/@api/api-resource/allocation
 @Component({
   selector: 'app-patient-allocation',
   templateUrl: './patient-allocation.component.html',
-  styleUrls: ['./patient-allocation.component.css'],
+  styleUrls: ['./patient-allocation.component.scss'],
 })
 export class PatientAllocationComponent implements OnInit {
   constructor(

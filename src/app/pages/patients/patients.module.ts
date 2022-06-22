@@ -10,7 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { PatientFormComponent } from '../../components/patient-form/patient-form.component';
-
+import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dialog.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { PatientFormComponent } from '../../components/patient-form/patient-form
     PatientDetailComponent,
     PatientAllocationComponent,
     EditPatientComponent,
-    PatientFormComponent
+    PatientFormComponent,
+   
   ],
   imports: [
     CommonModule,
@@ -27,7 +28,8 @@ import { PatientFormComponent } from '../../components/patient-form/patient-form
     FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    DeleteDialogModule
   ]
 })
 export class PatientsModule { }

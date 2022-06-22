@@ -4,7 +4,7 @@ import { APISchema } from 'src/libs/@api/api-objects/api-objects';
 @Component({
   selector: 'app-medicament-form',
   templateUrl: './medicament-form.component.html',
-  styleUrls: ['./medicament-form.component.css'],
+  styleUrls: ['./medicament-form.component.scss'],
 })
 export class MedicamentFormComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder) {}

@@ -7,6 +7,8 @@ import { MedicamentDetailComponent } from './medicament-detail/medicament-detail
 import { CreateMedicamentComponent } from './create-medicament/create-medicament.component';
 import { EditMedicamentComponent } from './edit-medicament/edit-medicament.component';
 import { MedicamentFormComponent } from '../../components/medicament-form/medicament-form.component'
+import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dialog.module';
+
 
 @NgModule({
   declarations: [
@@ -14,13 +16,14 @@ import { MedicamentFormComponent } from '../../components/medicament-form/medica
     MedicamentDetailComponent,
     CreateMedicamentComponent,
     EditMedicamentComponent,
-    MedicamentFormComponent
+    MedicamentFormComponent,
   ],
   imports: [
     CommonModule,
     MedicamentsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DeleteDialogModule
   ]
 })
 export class MedicamentsModule { }

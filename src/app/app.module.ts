@@ -9,7 +9,10 @@ import { LoadingInterceptor } from 'src/libs/http/interceptors/loading-intercept
 import { API_URL } from 'src/libs/http/http-tokens';
 import {environment} from "../environments/environment";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -21,7 +24,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     LoadingBarModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSidenavModule
   ],
   providers: [ 
     {provide: HTTP_INTERCEPTORS, useClass: DecoratorInterceptor, multi: true},
