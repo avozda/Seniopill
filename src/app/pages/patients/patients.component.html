@@ -1,22 +1,27 @@
-<h1>Patients list</h1>
-
-<table *ngIf="patients$ | async as patients">
-   <thead>
-      <tr>
-          <th>ID</th>
-          <th>Jméno</th>
-          <th>Pokoj</th>
-          <th>Lůžko</th>
-          <th>Datum narození</th>
-      </tr>
+<h1>Seznam pacientů</h1>
+<div>
+  <button type="button" routerLink="/patients/create">Create patient</button>
+</div>
+<input type="text" placeholder="search" (input)="filterPatientList($event)">
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Jméno</th>
+      <th>Pokoj</th>
+      <th>Lůžko</th>
+      <th>Datum narození</th>
+    </tr>
   </thead>
   <tbody>
-   <tr *ngFor="let patient of patients">
-      <td> <a [routerLink]="['/patients/', patient.id]">{{ patient.id }}</a></td>
+    <tr *ngFor="let patient of filteredList">
+      <td>
+        <a [routerLink]="['/patients/', patient.id]">{{ patient.id }}</a>
+      </td>
       <td>{{ patient.name }}</td>
       <td>{{ patient.room }}</td>
       <td>{{ patient.bed }}</td>
       <td>{{ patient.dateOfBirth }}</td>
-  </tr>
+    </tr>
   </tbody>
 </table>

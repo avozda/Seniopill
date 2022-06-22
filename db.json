@@ -1,27 +1,177 @@
 {
   "patients": [
     {
-      "id": 1,
       "name": "Adam Vožda",
-      "room": 3,
-      "bed": 4,
-      "dateOfBirth": "2003-08-15"
+      "room": 208,
+      "bed": 3,
+      "dateOfBirth": "2003-08-15",
+      "sex": "Jiné",
+      "description": "Legenda",
+      "id": 1
     },
     {
-      "name": "Adamos",
-      "room": 1,
-      "bed": 2,
-      "dateOfBirth": "2022-06-02",
+      "name": "Václav Gazda",
+      "room": 210,
+      "bed": 1,
+      "dateOfBirth": "1975-06-07",
+      "sex": "Žena",
+      "description": "Dement",
       "id": 2
     },
     {
-      "name": "Ondřej Kartousek",
-      "room": 2,
-      "bed": 3,
-      "dateOfBirth": "2022-06-03",
+      "name": "Jakub Hutěčka",
+      "room": 209,
+      "bed": 2,
+      "dateOfBirth": "1998-06-05",
+      "sex": "Jiné",
+      "description": "Mastňák",
       "id": 3
+    },
+    {
+      "name": "Šimon Plánka",
+      "room": 210,
+      "bed": 8,
+      "dateOfBirth": "2004-10-16",
+      "sex": "Muž",
+      "description": "Feťák",
+      "id": 4
+    },
+    {
+      "name": "Ondřej Kartousek",
+      "room": 109,
+      "bed": 4,
+      "dateOfBirth": "1997-04-29",
+      "sex": "Muž",
+      "description": "Profi swift developer",
+      "id": 5
+    },
+    {
+      "name": "David Poláček",
+      "room": 98,
+      "bed": 5,
+      "dateOfBirth": "2010-02-03",
+      "sex": "Jiné",
+      "description": "MMA FIGHTER",
+      "id": 6
+    },
+    {
+      "name": "Pepa z depa",
+      "room": 32,
+      "bed": 3,
+      "dateOfBirth": "2006-06-07",
+      "sex": "Jiné",
+      "description": "Mechanik",
+      "id": 7
     }
   ],
-  "drugs": [],
-  "allocation": []
+  "drugs": [
+    {
+      "title": "Metandienon",
+      "description": "Metandienon nebo také methandrostenolon je derivát testosteronu. Je to látka zneužívána sportovci ke zlepšení sportovních výkonů. Jedna se o 17 alfa alkylovaný steroid, druhý nejstarší vyvinutý steroid.",
+      "dosage": "Jestli se vlezeš do trika, tak je toho málo.",
+      "id": 2
+    },
+    {
+      "title": "Dianabol",
+      "description": "Pro velký chlapy",
+      "dosage": "2 tablety denně",
+      "id": 3
+    },
+    {
+      "title": "Paralen",
+      "description": "Na všechnu bolest",
+      "dosage": "2 tablety denně",
+      "id": 4
+    }
+  ],
+  "allocation": [
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-27T18:38:00.000Z",
+      "id": 1
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-22T18:38:00.000Z",
+      "id": 2
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-28T18:38:00.000Z",
+      "id": 3
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-23T18:38:00.000Z",
+      "id": 4
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-25T18:38:00.000Z",
+      "id": 5
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-07-01T18:38:00.000Z",
+      "id": 6
+    },
+    {
+      "patientId": 1,
+      "drugId": 4,
+      "drugTitle": "Paralen",
+      "patientName": "Adam Vožda",
+      "time": "20:38",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-26T18:38:00.000Z",
+      "id": 7
+    },
+    {
+      "patientId": 1,
+      "drugId": 3,
+      "drugTitle": "Dianabol",
+      "patientName": "Adam Vožda",
+      "time": "07:00",
+      "dosage": "2 tablety denně",
+      "notify": true,
+      "date": "2022-06-22T05:00:00.000Z",
+      "id": 8
+    }
+  ]
 }

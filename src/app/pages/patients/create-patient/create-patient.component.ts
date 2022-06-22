@@ -1,33 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { Component } from '@angular/core';
 import { PatientResourceService } from 'src/libs/@api/api-resource/patient-resource.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-patient',
   templateUrl: './create-patient.component.html',
-  styleUrls: ['./create-patient.component.css']
+  styleUrls: ['./create-patient.component.scss'],
 })
-export class CreatePatientComponent implements OnInit {
+export class CreatePatientComponent {
+  constructor(
+    private _patientResourceService: PatientResourceService,
+    private router: Router
+  ) {}
 
-  constructor(private _formBuilder: FormBuilder, 
-              private _patientResourceService: PatientResourceService,
-              private router:Router) { }
-
-  formGroup = this._formBuilder.group({
-    name: "",
-    room: null,
-    bed: null,
-    dateOfBirth: ""
-  })
-
-  
-
-  ngOnInit(): void {
+  createPatient(payload:{name: string, sex:string,description:string, room: number, bed: number, dateOfBirth: string}) {
+    this._patientResourceService
+      .createAction(payload)
+      .subscribe(() => this.router.navigate(['/patients']));
   }
-
-  createPatient(name: string, room: number, bed:number, dateOfBirth:""){
-    this._patientResourceService.createAction({name, room, bed,dateOfBirth}).subscribe(()=> this.router.navigate(['/patients']));
-  }
-
 }

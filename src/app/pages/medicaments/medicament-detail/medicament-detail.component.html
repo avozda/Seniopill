@@ -1,1 +1,10 @@
-<p>medicament-detail works!</p>
+<div *ngIf="drug$ | async as drug">
+   <div>{{ drug.id }}</div>
+   <div>{{ drug.title }}</div>
+   <hr>
+   <div style="width: 200px;">Popis: {{ drug.description }}</div>
+   <hr>
+   <div>Dávkování: {{ drug.dosage }}</div>
+   <a [routerLink]="['edit']" >Edit</a>
+ </div>
+ <app-dialog-button (onDelete)="onDelete()">Smazat</app-dialog-button>

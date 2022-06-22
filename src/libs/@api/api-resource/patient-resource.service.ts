@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { APISchema } from '../api-objects/api-objects';
 import { HttpClientService } from 'src/libs/http/http-client.service';
-import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +29,15 @@ export class PatientResourceService extends HttpClientService {
     });
   }
 
-  createAction(payload: {name: string, room: number, bed:number, dateOfBirth:""}, params?: Record<string, any>) {
+  createAction(payload: {name: string, room: number, bed:number, dateOfBirth:string}, params?: Record<string, any>) {
     return this.post<APISchema.Patient>(PatientResourceService.CREATE_ACTION_URL, payload, {
       params: params,
     });
   }
+  updateAction(id:string, payload: {name: string, room: number, bed:number, dateOfBirth:string}, params?: Record<string, any>) {
+    return this.put<APISchema.Patient>(PatientResourceService.UPDATE_ACTION_URL.replace(':id', id), payload, {
+      params: params,
+    });
+  }
+
 }
