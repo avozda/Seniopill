@@ -8,7 +8,11 @@ import { CreateMedicamentComponent } from './create-medicament/create-medicament
 import { EditMedicamentComponent } from './edit-medicament/edit-medicament.component';
 import { MedicamentFormComponent } from '../../components/medicament-form/medicament-form.component'
 import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dialog.module';
-
+import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,7 +27,12 @@ import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dial
     MedicamentsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DeleteDialogModule
+    DeleteDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class MedicamentsModule { }

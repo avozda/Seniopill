@@ -3,7 +3,7 @@ select {
    border: none;
    font-family: "Roboto";
    outline: none;
-   font-size: 2rem;
+   font-size: 1.5rem;
    opacity: 60%;
 }
 h2{
@@ -66,6 +66,13 @@ h1{
    width: 100vw;
   }
   section div.half {
+   margin-bottom: 40px;
    width: 100%;
+  }
+  h2{
+   font-size: 1.5rem;
+  }
+  .empty-box {
+   padding: 20px;
   }
  }

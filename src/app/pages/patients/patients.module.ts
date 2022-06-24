@@ -11,6 +11,17 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { PatientFormComponent } from '../../components/patient-form/patient-form.component';
 import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dialog.module';
+import {MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +40,17 @@ import { DeleteDialogModule } from 'src/app/components/delete-dialog/delete-dial
     ReactiveFormsModule,
     NgSelectModule,
     NgxMaterialTimepickerModule,
-    DeleteDialogModule
+    DeleteDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatCardModule
   ]
 })
 export class PatientsModule { }

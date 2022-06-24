@@ -1,20 +1,70 @@
-<h1>Seznám léků</h1>
+<h2>Seznam léků</h2>
+<div style="display: flex; justify-content: space-between">
+  <mat-form-field style="width: 50%" appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Vyhledávej"
+      #input
+    />
+  </mat-form-field>
+  <button
+    style="height: 50px; width: 200px; background-color: rgb(180, 247, 195)"
+    mat-raised-button
+    routerLink="/medicaments/create"
+  >
+    Přidat lék
+  </button>
+</div>
 
-  <div>
-    <button type="button" routerLink="/medicaments/create">Drugs create</button>
-  </div>
-<input type="text" placeholder="search" (input)="filterDrugList($event)">
-<table >
-   <thead>
-      <tr>
-          <th>ID</th>
-          <th>Název</th>
-      </tr>
-  </thead>
-  <tbody>
-   <tr *ngFor="let drug of filteredList">
-      <td> <a [routerLink]="['/medicaments/', drug.id]">{{ drug.id }}</a></td>
-      <td>{{ drug.title }}</td>
-  </tr>
-  </tbody>
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+  (matSortChange)="announceSortChange($event)"
+  class="mat-elevation-z8"
+>
+  <ng-container matColumnDef="id">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Řadit podle jména"
+    >
+      ID
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Řadit podle jména"
+    >
+      Název
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dosage">
+    <th
+      mat-header-cell
+      *matHeaderCellDef
+      mat-sort-header
+      sortActionDescription="Řadit podle pohlaví"
+    >
+      Doporučené dávkování
+    </th>
+    <td mat-cell *matCellDef="let element">{{ element.dosage }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    class="row"
+    mat-row
+    *matRowDef="let row; columns: displayedColumns"
+    [routerLink]="['/medicaments', row.id]"
+  ></tr>
 </table>

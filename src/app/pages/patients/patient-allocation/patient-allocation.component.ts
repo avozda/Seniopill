@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { APISchema } from 'src/libs/@api/api-objects/api-objects';
 import { DrugResourceService } from 'src/libs/@api/api-resource/drug-resource.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PatientResourceService } from 'src/libs/@api/api-resource/patient-resource.service';
 import { AllocationResourceService } from 'src/libs/@api/api-resource/allocation-resource.service';
 
@@ -22,8 +22,9 @@ export class PatientAllocationComponent implements OnInit {
   ) {}
 
   formGroup = this._formBuilder.group({
-    dosage: '',
-    time: '',
+    selectedDrug: new FormControl('', [Validators.required]),
+    dosage: new FormControl('', [Validators.required]),
+    time: new FormControl('', [Validators.required]),
     notify: false,
     Mon: false,
     Tue: false,
@@ -36,7 +37,7 @@ export class PatientAllocationComponent implements OnInit {
 
   id: string = String(this._route.snapshot.paramMap.get('id'));
   drugs: APISchema.Drug[] = [];
-  selectedDrug: APISchema.Drug = this.drugs[0];
+  hasSelectedDrug = false;
   patient: APISchema.Patient | {name:string} = {name:""};
 
   ngOnInit(): void {
@@ -60,9 +61,15 @@ export class PatientAllocationComponent implements OnInit {
   }
 
   onDrugChange() {
+    if(this.formGroup.value.selectedDrug == null){
+      this.hasSelectedDrug = true;
+    }else {
+      this.hasSelectedDrug = false;
+    }
+  
     this.formGroup.setValue({
       ...this.formGroup.value,
-      dosage: this.selectedDrug.dosage,
+      dosage: this.formGroup.value.selectedDrug.dosage,
     });
   }
   getNextDayOfTheWeek(
@@ -103,7 +110,12 @@ export class PatientAllocationComponent implements OnInit {
     Sat: boolean,
     Sun: boolean
   ) { 
-
+    if(this.formGroup.value.selectedDrug  == "" || this.formGroup.value.selectedDrug == null){
+      this.hasSelectedDrug = true;
+      return
+    }
+    if(!this.formGroup.valid){return}
+   // if(this.selectedDrug.value===""){this.selectedDrug.setErrors({'incorrect': true }); return;}
     let data = {
       patientId: Number(patientId),
       drugId,

@@ -1,10 +1,43 @@
-<div *ngIf="drug$ | async as drug">
-   <div>{{ drug.id }}</div>
-   <div>{{ drug.title }}</div>
-   <hr>
-   <div style="width: 200px;">Popis: {{ drug.description }}</div>
-   <hr>
-   <div>Dávkování: {{ drug.dosage }}</div>
-   <a [routerLink]="['edit']" >Edit</a>
- </div>
- <app-dialog-button (onDelete)="onDelete()">Smazat</app-dialog-button>
+<section>
+  <div class="column" *ngIf="drug$ | async as drug">
+    <h2>{{ drug.title }}</h2>
+    <div class="desc"><span>Doporučené dávkování</span> {{ drug.dosage }}</div>
+    <div class="desc"><span>Popis</span></div>
+    <div>{{ drug.description }}</div>
+    <div class="desc">
+      <button
+        style="margin-right: 20px; height: 36px; width: 80px; background-color: #ffff"
+        mat-raised-button
+        [routerLink]="['edit']"
+      >
+        Upravit
+      </button>
+      <app-dialog-button (onDelete)="onDelete()">Smazat</app-dialog-button>
+    </div>
+  </div>
+</section>
+
+<!-- <div class="detail" *ngIf="patient$ | async as patient">
+      <h2>{{ patient.name }}</h2>
+      <div>
+        <span>Pokoj č.</span> {{ patient.room }} <span>Postel č.</span>
+        {{ patient.bed }}
+      </div>
+      <div><span>Datum narození </span>{{ patient.dateOfBirth }}</div>
+      <div><span>Pohlaví </span> {{ patient.sex }}</div>
+      <div class="desc"><span>Popis</span></div>
+      <div>{{ patient.description }}</div>
+    </div>
+    <div class="desc">
+      <button
+        style="height: 36px; width: 80px; background-color: #ffff"
+        mat-raised-button
+        [routerLink]="['edit']"
+      >
+        Upravit
+      </button>
+      <app-dialog-button
+        style="margin: 0 20px"
+        (onDelete)="onDelete()"
+      ></app-dialog-button>
+    </div> -->

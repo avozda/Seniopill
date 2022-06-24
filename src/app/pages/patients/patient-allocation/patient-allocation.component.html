@@ -1,92 +1,80 @@
-<h1>Přidat léky k pacientovi</h1>
-<ng-select (change)="onDrugChange()" autofocus [(ngModel)]="selectedDrug">
-   <ng-option *ngFor="let drug of drugs" [value]="drug">{{
-     drug.title
-   }}</ng-option>
- </ng-select>
+<h1>Přiřadit léky k pacientovi</h1>
+
+<form
+  [formGroup]="formGroup"
+  (ngSubmit)="
+    createAllocation(
+      id,
+      formGroup.value.selectedDrug.id,
+      formGroup.value.selectedDrug.title,
+      patient.name,
+      formGroup.value.time,
+      formGroup.value.dosage,
+      formGroup.value.notify,
+      formGroup.value.Mon,
+      formGroup.value.Tue,
+      formGroup.value.Wed,
+      formGroup.value.Thu,
+      formGroup.value.Fri,
+      formGroup.value.Sat,
+      formGroup.value.Sun
+    )
+  "
+>
+
+  <ng-select (change)="onDrugChange()" autofocus formControlName="selectedDrug">
+    <ng-option *ngFor="let drug of drugs" [value]="drug">{{
+      drug.title
+    }}</ng-option>
+   
+  </ng-select>
+  <mat-error *ngIf="hasSelectedDrug">Musíte vybrat lék</mat-error>
 
 
-<form [formGroup]="formGroup" (ngSubmit)="createAllocation(
- id,
-selectedDrug.id,
-selectedDrug.title,
-patient.name,
-formGroup.value.time,
-formGroup.value.dosage,
-formGroup.value.notify,
-formGroup.value.Mon,
-formGroup.value.Tue,
-formGroup.value.Wed,
-formGroup.value.Thu,
-formGroup.value.Fri,
-formGroup.value.Sat,
-formGroup.value.Sun)">
+<div class="row">
+  <mat-form-field appearance="outline">
+    <mat-label>Doporučené dávkování</mat-label>
+    <input autofocus formControlName="dosage" matInput />
+    <mat-error>Dávkování je povinné</mat-error>
+  </mat-form-field>
 
-  <div class="form-control">
-    <label class="label" for="dosage">Dávkování</label>
+  <mat-form-field appearance="outline">
+    <mat-label>Čas dávky</mat-label>
     <input
-      formControlName="dosage"
-      type="text"
-      placeholder="Dávkování"
+      matInput
+      [ngxTimepicker]="picker"
+      [format]="24"
+      formControlName="time"
+      readonly
     />
-  </div>
-  <div class="form-control">
-    <label class="label" for="hours">Čas</label>
-    <input [ngxTimepicker]="picker" [format]="24" formControlName="time"  placeholder="Čas" readonly>
     <ngx-material-timepicker #picker></ngx-material-timepicker>
-    
+    <mat-error>Čas je povinný</mat-error>
+  </mat-form-field>
+</div>
+ 
+
+  <mat-checkbox color="primary" formControlName="notify">
+    Upozornění
+  </mat-checkbox>
+
+  <div class="days">
+    <mat-checkbox color="primary" formControlName="Mon"> Pondělí </mat-checkbox>
+    <mat-checkbox color="primary" formControlName="Tue"> Úterý</mat-checkbox>
+
+    <mat-checkbox color="primary" formControlName="Wed"> Středa</mat-checkbox>
+
+    <mat-checkbox color="primary" formControlName="Thu"> Čtvrtek</mat-checkbox>
+
+    <mat-checkbox color="primary" formControlName="Fri"> Pátek</mat-checkbox>
+
+    <mat-checkbox color="primary" formControlName="Sat"> Sobota </mat-checkbox>
+    <mat-checkbox color="primary" formControlName="Sun"> Neděle</mat-checkbox>
   </div>
-  <div class="form-control">
-    <label class="label" for="notify">Upozornění</label>
-    <input
-      formControlName="notify"
-      type="checkbox"
-      placeholder="Upozornění"
-    />
-  </div>
-  <div class="form-control">
-    <label class="label" for="Mon">Pondělí</label>
-    <input
-      formControlName="Mon"
-      type="checkbox"
-      placeholder="Pondělí"
-    />
-    <label class="label" for="Tue">Úterý</label>
-    <input
-      formControlName="Tue"
-      type="checkbox"
-      placeholder="Úterý"
-    />
-    <label class="label" for="Wed">Středa</label>
-    <input
-      formControlName="Wed"
-      type="checkbox"
-      placeholder="Středa"
-    />
-    <label class="label" for="Thu">Čtvrtek</label>
-    <input
-      formControlName="Thu"
-      type="checkbox"
-      placeholder="Čtvrtek"
-    />
-    <label class="label" for="Fri">Pátek</label>
-    <input
-      formControlName="Fri"
-      type="checkbox"
-      placeholder="Pátek"
-    />
-    <label class="label" for="Sat">Sobota</label>
-    <input
-      formControlName="Sat"
-      type="checkbox"
-      placeholder="Sobota"
-    />
-    <label class="label" for="Sun">Neděle</label>
-    <input
-      formControlName="Sun"
-      type="checkbox"
-      placeholder="Neděle"
-    />
-  </div>
-  <button type="submit">Add</button>
+  <button
+  style="margin-top: 20px;height: 50px; width: 200px; background-color: rgb(180, 247, 195)"
+  mat-raised-button
+  type="submit"
+  >
+ Přiřadit lék
+</button>
 </form>

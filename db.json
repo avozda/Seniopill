@@ -14,7 +14,7 @@
       "room": 210,
       "bed": 1,
       "dateOfBirth": "1975-06-07",
-      "sex": "Žena",
+      "sex": "Jiné",
       "description": "Dement",
       "id": 2
     },
@@ -26,15 +26,6 @@
       "sex": "Jiné",
       "description": "Mastňák",
       "id": 3
-    },
-    {
-      "name": "Šimon Plánka",
-      "room": 210,
-      "bed": 8,
-      "dateOfBirth": "2004-10-16",
-      "sex": "Muž",
-      "description": "Feťák",
-      "id": 4
     },
     {
       "name": "Ondřej Kartousek",
@@ -115,7 +106,7 @@
       "time": "20:38",
       "dosage": "2 tablety denně",
       "notify": true,
-      "date": "2022-06-28T18:38:00.000Z",
+      "date": "2022-07-05T18:38:00.000Z",
       "id": 3
     },
     {
@@ -126,7 +117,7 @@
       "time": "20:38",
       "dosage": "2 tablety denně",
       "notify": true,
-      "date": "2022-06-23T18:38:00.000Z",
+      "date": "2022-07-21T18:38:00.000Z",
       "id": 4
     },
     {
@@ -159,7 +150,7 @@
       "time": "20:38",
       "dosage": "2 tablety denně",
       "notify": true,
-      "date": "2022-06-26T18:38:00.000Z",
+      "date": "2022-07-10T18:38:00.000Z",
       "id": 7
     },
     {
@@ -170,7 +161,7 @@
       "time": "07:00",
       "dosage": "2 tablety denně",
       "notify": true,
-      "date": "2022-06-22T05:00:00.000Z",
+      "date": "2022-06-29T05:00:00.000Z",
       "id": 8
     }
   ]

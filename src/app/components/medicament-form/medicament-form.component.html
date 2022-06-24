@@ -1,27 +1,45 @@
 <form [formGroup]="formGroup" (ngSubmit)="submitForm(formGroup.value.title, formGroup.value.description, formGroup.value.dosage)">
-   <div class="form-control">
-       <label class="label" for="title">Název</label>
-       <input
-           formControlName="title"
-           type="text"
-           placeholder="Název léku"
-         autofocus
-       />
-   </div>
-   <div class="form-control">
-       <label class="label" for="description">Popis</label>
-       <textarea formControlName="description" placeholder="Popis léku"  cols="20" rows="5"></textarea>
-   </div>
-   <div class="form-control">
-      <label class="label" for="dosage">Dávkování</label>
-      <input
-          formControlName="dosage"
-          type="text"
-          placeholder="Doporučené dávkování"
-      />
-  </div>
-
-   <div>
-       <button nbButton type="submit">Přidat lék</button>
-   </div>
+    <ng-container *ngIf="Data; else createTitle">
+        <h2>Úprava léku</h2>
+    </ng-container>
+    <ng-template #createTitle>
+        <h2>Přidat lék</h2>
+    </ng-template>
+    <mat-form-field appearance="outline">
+        <mat-label>Název</mat-label>
+        <input autofocus formControlName="title" matInput />
+        <mat-error >Název léku je povinný</mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Doporučené dávkování</mat-label>
+        <input formControlName="dosage" matInput />
+        <mat-error >Doporučené dávkování je povinné</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Popis</mat-label>
+        <textarea
+          formControlName="description"
+          cols="20"
+          rows="5"
+          matInput
+        ></textarea>
+      </mat-form-field>
+      <ng-container *ngIf="Data; else createButton">
+        <button
+      style="height: 50px; width: 200px; background-color: rgb(180, 247, 195)"
+      mat-raised-button
+      type="submit"
+    >
+     Upravit lék
+    </button>
+    </ng-container>
+    <ng-template #createButton>
+        <button
+      style="height: 50px; width: 200px; background-color: rgb(180, 247, 195)"
+      mat-raised-button
+      type="submit"
+    >
+     Přidate lék
+    </button>
+    </ng-template>
 </form>

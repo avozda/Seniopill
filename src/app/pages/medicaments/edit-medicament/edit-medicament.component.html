@@ -1,4 +1,4 @@
-<h1>Úprava léku</h1>
+
 <div *ngIf="drugData$ | async as drug">
    <app-medicament-form (onFormSubmit)="updateDrug($event)" [Data]="drug"></app-medicament-form>
 </div>
