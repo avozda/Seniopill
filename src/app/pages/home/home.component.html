@@ -9,7 +9,7 @@
       </select>
     </div>
     
-    <div *ngIf="upcomingAllocations.length!=0; else empty"  class="medicaments">
+    <div *ngIf="upcomingAllocations.length!=0; else emptyAllocations"  class="medicaments">
       <mat-card
         class="card"
         *ngFor="let allocation of upcomingAllocations"
@@ -30,11 +30,11 @@
         </div>
       </mat-card>
     </div>
-    <ng-template #empty ><p class="empty-box">Všechny léky pro tento den již byly rozdány 💊</p></ng-template>
+    <ng-template #emptyAllocations ><p class="empty-box">Všechny léky pro tento den již byly rozdány 💊</p></ng-template>
   </div>
   <div class="half">
     <h2>Naposledy zobrazení pacienti</h2>
-    <div class="medicaments">
+    <div class="medicaments" *ngIf="lastSeenPatients.length !=0; else emptyPatietns">
       <mat-card
         class="card"
         *ngFor="let patient of lastSeenPatients"
@@ -55,5 +55,6 @@
         </div>
       </mat-card>
     </div>
+    <ng-template #emptyPatietns ><p class="empty-box">Zatím jsi nezobrazil žádného pacienta 🤒</p></ng-template>
   </div>
 </section>

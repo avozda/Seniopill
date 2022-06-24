@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { APISchema } from 'src/libs/@api/api-objects/api-objects';
 @Component({
   selector: 'app-medicament-form',
@@ -18,9 +18,9 @@ export class MedicamentFormComponent implements OnInit {
   @Input() Data?: APISchema.Drug;
 
   formGroup = this._formBuilder.group({
-    title: '',
+    title: new FormControl('', [Validators.required]),
     description: '',
-    dosage: '',
+    dosage: new FormControl('', [Validators.required]),
   });
 
   ngOnInit(): void {
@@ -34,6 +34,7 @@ export class MedicamentFormComponent implements OnInit {
   }
 
   submitForm(title: string, description: string, dosage: string) {
+    if(!this.formGroup.valid){return}
     const payload = { title, description, dosage };
     this.onFormSubmit.emit(payload);
   }

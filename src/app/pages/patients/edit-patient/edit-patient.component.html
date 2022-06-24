@@ -1,4 +1,3 @@
-<h1>Úprava pacienta</h1>
 <div *ngIf="patientData$ | async as patient">
    <app-patient-form (onFormSubmit)="updatePatient($event)" [Data]="patient"></app-patient-form>
 </div>

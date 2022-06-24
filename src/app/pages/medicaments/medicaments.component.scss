@@ -1,0 +1,19 @@
+table{
+   width: 100%;
+}
+
+.row{
+   cursor: pointer;
+}
+.row:hover{
+   background-color: rgba(180, 247, 195,0.4);
+}
+h2{
+   display: flex;
+   align-items: center;
+   opacity: 60%;
+   font-size: 2rem;
+   height: 58px;
+   font-weight: 400;
+   margin-bottom: 0;
+}

@@ -1,5 +1,6 @@
+import { DATE_PIPE_DEFAULT_TIMEZONE } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { APISchema } from 'src/libs/@api/api-objects/api-objects';
 
 @Component({
@@ -23,6 +24,8 @@ export class PatientFormComponent implements OnInit {
     }
   }
 
+  wrongDate = false;
+
   @Output() onFormSubmit: EventEmitter<{
     name: string, room: number, bed:number, dateOfBirth:string, sex:string; description:string;
   }> = new EventEmitter()
@@ -30,15 +33,22 @@ export class PatientFormComponent implements OnInit {
   @Input() Data?: APISchema.Patient;
 
   formGroup = this._formBuilder.group({
-    name: '',
-    room: null,
-    bed: null,
-    dateOfBirth: '',
-    sex:'',
+    name: new FormControl('', [Validators.required]),
+    room:  new FormControl('', [Validators.required]),
+    bed:  new FormControl('', [Validators.required]),
+    dateOfBirth:  new FormControl('', [Validators.required]),
+    sex: new FormControl('', [Validators.required]),
     description:''
   });
 
   submitForm(name: string, room: number, bed:number, dateOfBirth:string, sex:string, description:string){
+    if(!this.formGroup.valid){return}
+
+    if(new Date(this.formGroup.value.dateOfBirth) > new Date()){
+      this.formGroup.get("dateOfBirth")?.setErrors({'incorrect': true })
+      return
+    }
+
     const payload = {name, room, bed, dateOfBirth,sex, description};
     this.onFormSubmit.emit(payload);
   }

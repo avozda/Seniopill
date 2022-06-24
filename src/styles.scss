@@ -12,7 +12,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$Seniopill-primary: mat.define-palette(mat.$teal-palette);
+$Seniopill-primary: mat.define-palette(mat.$teal-palette, A700);
 $Seniopill-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
@@ -86,3 +86,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  header mat-icon {
   margin-right: 10px;
  }
+ @media only screen and (max-width: 450px) {
+  .logo span {
+    display: none;
+  }
+ }
+
+ header.timepicker__header.ng-tns-c188-2{
+  background-color: #b4f7c3 !important;
+}
+button.timepicker-button span {
+  color: #b4f7c3 !important;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 45px !important;
+}
+div.ng-input input {
+  height: 32px !important;
+}

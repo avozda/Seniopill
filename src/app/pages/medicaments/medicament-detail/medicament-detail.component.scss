@@ -1,0 +1,80 @@
+h2{
+   display: flex;
+   align-items: center;
+   opacity: 60%;
+   font-size: 2rem;
+   height: 58px;
+   font-weight: 400;
+   margin-bottom: 0;
+}
+span{
+   font-weight: 500;
+   font-size: 1.02rem;
+}
+
+.detail div {
+   margin: 10px 0;
+}
+.desc {
+   margin-top: 30px !important;
+}
+
+section {
+   display: flex;
+   height: 80vh;
+}
+section .column {
+   width: 50%;
+   height: 100%;
+}
+p{
+   margin: 0;
+}
+.card {
+   width: 70%;
+   margin: 0;
+   margin-bottom: 15px;
+   
+   transition: 200ms;
+}
+button.complete {
+   transition: 250ms;
+}
+.complete:hover{
+   background-color: rgba(180, 247, 195,0.4) !important;
+}
+.medicaments{
+   padding-top: 20px;
+   padding-left: 10px;
+   overflow: scroll;
+   height: 90%;
+}
+
+.data {
+   display: flex;
+   justify-content: space-between;
+}
+
+.empty-box {
+   height: 60%;
+   display: flex;
+   justify-content: center;
+   opacity: 60%;
+   font-size: 1.2rem;
+   align-items: center;
+}
+
+@media only screen and (max-width: 820px) {
+   section{
+     flex-direction: column;
+   }
+   section .column {
+      width: 100%;
+   }
+   .column:first-child {
+      margin-bottom: 50px;
+   }
+   .card{
+      width: 100%;
+   }
+  }

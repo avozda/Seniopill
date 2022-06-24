@@ -1,133 +1,177 @@
-<ng-container *ngIf="Data; else create">
-  <form
-    [formGroup]="formGroup"
-    (ngSubmit)="
-      submitForm(
-        formGroup.value.name,
-        formGroup.value.room,
-        formGroup.value.bed,
-        formGroup.value.dateOfBirth,
-        formGroup.value.sex,
-        formGroup.value.description
-      )
-    "
-  >
-    <div class="form-control">
-      <label class="label" for="name">Jméno</label>
-      <input
-        [value]="Data.name"
-        formControlName="name"
-        type="text"
-        placeholder="Jméno pacienta"
-        autofocus
-      />
-    </div>
-    <div class="form-control">
-      <label class="label" for="name">Další informace</label>
-      <textarea
-        formControlName="description"
-        placeholder="..."
-        cols="30"
-        rows="10"
-      ></textarea>
-    </div>
-    <div class="form-control">
-      <select formControlName="sex">
-        <option value="Muž">Muž</option>
-        <option value="Žena">Žena</option>
-        <option value="Jiné">Jiné</option>
-      </select>
-    </div>
-    <div class="form-control">
-      <label class="label" for="dateOfBirth">Datum narození</label>
-      <input
-        [value]="Data.dateOfBirth"
-        formControlName="dateOfBirth"
-        type="date"
-        placeholder="Datum narození"
-      />
-    </div>
-    <div class="form-control">
-      <label class="label" for="room">Číslo místnosti</label>
-      <input
-        [value]="Data.room"
-        formControlName="room"
-        type="number"
-        placeholder="0"
-      />
-    </div>
-    <div class="form-control">
-      <label class="label" for="bed">Číslo lůžka</label>
-      <input
-        [value]="Data.bed"
-        formControlName="bed"
-        type="number"
-        placeholder="0"
-      />
-    </div>
-    <div>
-      <button nbButton type="submit">Upravit pacienta</button>
-    </div>
-  </form>
-</ng-container>
+<section>
+  <ng-container *ngIf="Data; else create">
+    <h2>Upravit pacienta</h2>
 
-<ng-template #create>
-  <form
-    [formGroup]="formGroup"
-    (ngSubmit)="
-      submitForm(
-        formGroup.value.name,
-        formGroup.value.room,
-        formGroup.value.bed,
-        formGroup.value.dateOfBirth,
-        formGroup.value.sex,
-        formGroup.value.description
-      )
-    "
-  >
-    <div class="form-control">
-      <label class="label" for="name">Jméno</label>
-      <input
-        formControlName="name"
-        type="text"
-        placeholder="Jméno pacienta"
-        autofocus
-      />
-    </div>
-    <div class="form-control">
-      <label class="label" for="name">Další informace</label>
-      <textarea
-        formControlName="description"
-        placeholder="..."
-        cols="30"
-        rows="10"
-      ></textarea>
-    </div>
-    <div class="form-control">
-      <select formControlName="sex">
-        <option value="Muž">Muž</option>
-        <option value="Žena">Žena</option>
-        <option value="Jiné">Jiné</option>
-      </select>
-    </div>
-    <div class="form-control">
-      <label class="label" for="dateOfBirth">Datum narození</label>
-      <input
-        formControlName="dateOfBirth"
-        type="date"
-        placeholder="Datum narození"
-      />
-    </div>
-    <div class="form-control">
-      <label class="label" for="room">Číslo místnosti</label>
-      <input formControlName="room" type="number" placeholder="0" />
-    </div>
-    <div class="form-control">
-      <label class="label" for="bed">Číslo lůžka</label>
-      <input formControlName="bed" type="number" placeholder="0" />
-    </div>
-    <div>
-      <button nbButton type="submit">Přidat pacienta</button>
-    </div>
-  </form>
-</ng-template>
+    <form
+      [formGroup]="formGroup"
+      (ngSubmit)="
+        submitForm(
+          formGroup.value.name,
+          formGroup.value.room,
+          formGroup.value.bed,
+          formGroup.value.dateOfBirth,
+          formGroup.value.sex,
+          formGroup.value.description
+        )
+      "
+    >
+      <div class="row">
+        
+          <mat-form-field appearance="outline">
+            <mat-label>Jméno</mat-label>
+            <input autofocus formControlName="name" matInput />
+            <mat-error >Jméno je povinné</mat-error>
+          </mat-form-field>
+    
+
+        <mat-form-field appearance="outline">
+          <mat-label>Pohlaví</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option value="Muž">Muž</mat-option>
+            <mat-option value="Žena">Žena</mat-option>
+            <mat-option value="Jiné">Jiné</mat-option>
+          </mat-select>
+          <mat-error >Pohlaví je povinné</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Číslo pokoje</mat-label>
+          <input formControlName="room" type="number" matInput />
+          <mat-error >Číslo pokoje je povinné</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Číslo lůžka</mat-label>
+          <input formControlName="bed" type="number" matInput />
+          <mat-error >Číslo lůžka je povinné</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Datum narození</mat-label>
+          <input
+            formControlName="dateOfBirth"
+            matInput
+            [matDatepicker]="picker"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error >Datum narození je povinný a nesmí být v budoucnosti</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Další informace</mat-label>
+        <textarea
+          formControlName="description"
+          cols="20"
+          rows="5"
+          matInput
+        ></textarea>
+        <mat-error >Datum narození je povinný</mat-error>
+      </mat-form-field>
+      <div>
+        <button
+          style="
+            height: 50px;
+            width: 200px;
+            background-color: rgb(180, 247, 195);
+          "
+          mat-raised-button
+          type="submit"
+        >
+          Upravit pacienta
+        </button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-template #create>
+    <h2>Přidat pacienta</h2>
+    <form
+      [formGroup]="formGroup"
+      (ngSubmit)="
+        submitForm(
+          formGroup.value.name,
+          formGroup.value.room,
+          formGroup.value.bed,
+          formGroup.value.dateOfBirth,
+          formGroup.value.sex,
+          formGroup.value.description
+        )
+      "
+    >
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Jméno</mat-label>
+          <input autofocus formControlName="name" matInput />
+          <mat-error >Jméno je povinné</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pohlaví</mat-label>
+          <mat-select formControlName="sex">
+            <mat-option value="Muž">Muž</mat-option>
+            <mat-option value="Žena">Žena</mat-option>
+            <mat-option value="Jiné">Jiné</mat-option>
+          </mat-select>
+          <mat-error >Pohlaví je povinné</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Číslo pokoje</mat-label>
+          <input formControlName="room" type="number" matInput />
+          <mat-error >Číslo pokoje je povinné</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Číslo lůžka</mat-label>
+          <input formControlName="bed" type="number" matInput />
+          <mat-error >Číslo lůžka je povinné</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="row">
+        <mat-form-field appearance="outline">
+          <mat-label>Datum narození</mat-label>
+          <input
+            formControlName="dateOfBirth"
+            matInput
+            [matDatepicker]="picker"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error >Datum narození je povinný a nesmí být v budoucnosti</mat-error>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Další informace</mat-label>
+        <textarea
+          formControlName="description"
+          cols="20"
+          rows="5"
+          matInput
+        ></textarea>
+      </mat-form-field>
+      <div>
+        <button
+          style="
+            height: 50px;
+            width: 200px;
+            background-color: rgb(180, 247, 195);
+          "
+          mat-raised-button
+          type="submit"
+        >
+          Přidat pacienta
+        </button>
+      </div>
+    </form>
+  </ng-template>
+</section>

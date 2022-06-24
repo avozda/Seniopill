@@ -1,34 +1,79 @@
-<div *ngIf="patient$ | async as patient">
-  <div>{{ patient.id }}</div>
-  <div>{{ patient.name }}</div>
-  <div>Pokoj č.{{ patient.room }}</div>
-  <div>Postel č.{{ patient.bed }}</div>
-  <div>{{ patient.dateOfBirth }}</div>
-  <div>{{patient.sex}}</div>
-  <div>{{patient.description}}</div>
-  <a routerLink='allocate'>patient allocation</a>
-</div>
-<a [routerLink]="['edit']"><button>Edit</button></a>
+<section>
+  <div class="column">
+    <div class="detail" *ngIf="patient$ | async as patient">
+      <h2>{{ patient.name }}</h2>
+      <div>
+        <span>Pokoj č.</span> {{ patient.room }} <span>Postel č.</span>
+        {{ patient.bed }}
+      </div>
+      <div><span>Datum narození </span>{{ patient.dateOfBirth }}</div>
+      <div><span>Pohlaví </span> {{ patient.sex }}</div>
+      <div class="desc"><span>Popis</span></div>
+      <div>{{ patient.description }}</div>
+    </div>
+    <div class="desc">
+      <button
+        style="height: 36px; width: 80px; background-color: #ffff"
+        mat-raised-button
+        [routerLink]="['edit']"
+      >
+        Upravit
+      </button>
+      <app-dialog-button
+        style="margin: 0 20px"
+        (onDelete)="onDelete()"
+      ></app-dialog-button>
+    </div>
+  </div>
 
-<app-dialog-button (onDelete)="onDelete()"></app-dialog-button>
-<table >
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Název</th>
-      <th scope="col">Dávka</th>
-      <th scope="col">Datum</th>    
-      <th></th> 
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let allocation of allocations ">
-      <th scope="row">{{ allocation.id}}</th>
-      <td>{{allocation.drugTitle}}</td>
-      <td>{{allocation.dosage}}</td>  
-      <td>{{allocation.date | date: 'EEEE dd/MM HH:mm'}}</td>
-      <td><button (click)="completeAllocation(allocation.id)">✔️</button> 
-        <app-dialog-button (onDelete)="deleteAllocation(allocation.id)"></app-dialog-button>
-    </tr>
-  </tbody>
-</table>
+  <div class="column" >
+    <div style="display: flex;justify-content: space-between; align-items: center; width: 70%;">
+      <h2>Příděl léků</h2>
+      <button *ngIf="patient$ | async as patient" style="height: 40px;width: 120px;background-color: rgb(180, 247, 195);"  mat-raised-button [routerLink]="['allocate']">Přidělit lék</button>
+    </div>
+
+    <div
+      *ngIf="allocations.length != 0; else emptyAllocations"
+      class="medicaments"
+    >
+      <mat-card
+        class="card"
+        *ngFor="let allocation of allocations"
+        [routerLink]="['/patients/', allocation.patientId]"
+      >
+        <div class="data">
+          <p style="margin-bottom: 10px">
+            <b>{{ allocation.drugTitle }}</b>
+          </p>
+          <p>
+            <b>{{ allocation.date | date: "dd/MM EEEE HH:mm" }}</b>
+          </p>
+        </div>
+
+        <div class="data">
+          <p></p>
+          <p>{{ allocation.dosage }}</p>
+        </div>
+        <div>
+          <button
+          class="complete"
+        style="height: 36px; width: 80px;"
+        mat-raised-button
+        (click)="completeAllocation(allocation.id)"
+      >
+          Splnit
+      </button>
+          <app-dialog-button
+            style="margin: 0 20px"
+            (onDelete)="deleteAllocation(allocation.id)"
+          ></app-dialog-button>
+        </div>
+      </mat-card>
+    </div>
+    <ng-template #emptyAllocations
+      ><p class="empty-box">
+        Tento pacient momentálně nepřijímá žídné léky💊
+      </p></ng-template
+    >
+  </div>
+</section>
